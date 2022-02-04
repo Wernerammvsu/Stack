@@ -6,18 +6,32 @@ using System.Threading.Tasks;
 
 namespace Self_Stack
 {
-    public class Stack<T>
+    public class Stack<T> : LinkedList<T>
     {
-        private T[] _array;
-
-        public Stack()
-        {
-           
-        }
 
         public void Push(T x)
         {
+            Add(x);
+        }
 
+        public T Pop()
+        {
+            if (_tail == null)
+            {
+                return default(T);
+            }
+            var top = _tail.Value;
+            Remove(top);
+            return top;
+        }
+
+        public T Top()
+        {
+            if (_tail == null)
+            {
+                return default(T);
+            }
+            return _tail.Value;
         }
     }
 }
